@@ -74,6 +74,10 @@ export class HomeComponent {
     this.videoPlayerOpen = true;
   }
 
+  openUploadVideo() {
+    this.menuService.uploadOverlayOpen = true;
+  }
+
   closeVideoPlayer() {
     this.videoPlayerOpen = false;
   }

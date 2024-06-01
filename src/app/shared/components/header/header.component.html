@@ -1,5 +1,27 @@
 <header>
-  <img src="./../../../../assets/img/videoflix-logo.svg" alt="videoflix-logo" />
+  <div>
+    <img
+      src="./../../../../assets/img/videoflix-logo.svg"
+      alt="videoflix-logo"
+    />
+
+    @if (homePage) {
+    <nav>
+      <a
+        [routerLink]="[]"
+        [queryParams]="{ visibility: 'public' }"
+        routerLinkActive="active-link"
+        >Public videos</a
+      >
+      <a
+        [routerLink]="[]"
+        [queryParams]="{ visibility: 'private' }"
+        routerLinkActive="active-link"
+        >Private videos</a
+      >
+    </nav>
+    }
+  </div>
 
   @if (signUpPage || forgotPasswordPage) {
   <app-button-without-icon

@@ -12,6 +12,7 @@ import { UsermenuComponent } from '../../../home/components/user-menu/user-menu.
     ButtonWithoutIconComponent,
     RouterModule,
     UsermenuComponent,
+    RouterModule,
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',

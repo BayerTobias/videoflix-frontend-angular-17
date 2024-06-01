@@ -20,18 +20,28 @@
   </main>
   } @else if (privateRoute) {
   <main>
-    <div class="video-row">
-      @for (video of dataManager.privateVideos; track $index) {
-      <app-video-card
-        (click)="openVideoPlayer(video)"
-        [video]="video"
-      ></app-video-card>
-      <div>
-        <img src="{{ video.thumbnail_file }}" alt="img" />
+    @if (dataManager.privateVideos.length > 0 ) {
+    <div class="row-wrapper">
+      <h2>Your private Videos</h2>
+      <div style="flex-wrap: wrap" class="video-row">
+        @for (video of dataManager.privateVideos; track $index) {
+        <app-video-card
+          (click)="openVideoPlayer(video)"
+          [video]="video"
+        ></app-video-card>
+        }
       </div>
-
-      }
     </div>
+    }@else{
+    <div class="no-videos-wrapper">
+      <h2>Looks Quite Empty</h2>
+      <p>
+        You haven't uploaded any videos yet. Start by uploading your private
+        videos
+        <span (click)="openUploadVideo()">here.</span>
+      </p>
+    </div>
+    }
   </main>
   }@else {
   <main class="error-page">

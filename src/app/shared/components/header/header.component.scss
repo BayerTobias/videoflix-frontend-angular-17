@@ -4,7 +4,26 @@ header {
   @include dflex($jc: space-between);
   padding: 16px;
 
+  > div {
+    @include dflex($gp: 32px);
+  }
+
   img {
     width: 150px;
+  }
+
+  nav {
+    @include dflex($gp: 16px);
+
+    a {
+      font-size: 14px;
+      text-decoration: none;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .active-link {
+      text-decoration: underline;
+      color: rgba(255, 255, 255, 0.9);
+    }
   }
 }
