@@ -10,7 +10,7 @@ import {
 import { FormInputWithErrorComponent } from '../../../shared/components/form-input-with-error/form-input-with-error.component';
 import { ButtonWithoutIconComponent } from '../../../shared/components/button-without-icon/button-without-icon.component';
 import { DataManagerService } from '../../services/data-manager.service';
-import { MenueStateService } from '../../services/menue-state.service';
+import { menuStateService } from '../../services/menu-state.service';
 
 @Component({
   selector: 'app-video-upload-overlay',
@@ -33,7 +33,7 @@ export class VideoUploadOverlayComponent {
 
   private fb = inject(FormBuilder);
   private dataManager = inject(DataManagerService);
-  private menueService = inject(MenueStateService);
+  private menuService = inject(menuStateService);
 
   constructor() {
     this.uploadForm = this.fb.group({
@@ -113,6 +113,6 @@ export class VideoUploadOverlayComponent {
   }
 
   closeOverlay() {
-    this.menueService.uploadOverlayOpen = false;
+    this.menuService.uploadOverlayOpen = false;
   }
 }

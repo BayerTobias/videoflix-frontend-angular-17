@@ -2,14 +2,14 @@ import { Component, inject } from '@angular/core';
 import { HeaderComponent } from '../../../shared/components/header/header.component';
 import { DataManagerService } from '../../services/data-manager.service';
 import { CommonModule } from '@angular/common';
-import { MenueStateService } from '../../services/menue-state.service';
 import { VideoUploadOverlayComponent } from '../video-upload-overlay/video-upload-overlay.component';
 import { VideoCardComponent } from '../video-card/video-card.component';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { VideoPlayerOverlayComponent } from '../video-player-overlay/video-player-overlay.component';
 import { Video } from '../../../models/video.model';
 import { UserOverlayComponent } from '../user-overlay/user-overlay.component';
 import { DeleteUserOverlayComponent } from '../delete-user-overlay/delete-user-overlay.component';
+import { menuStateService } from '../../services/menu-state.service';
 
 @Component({
   selector: 'app-home',
@@ -22,6 +22,7 @@ import { DeleteUserOverlayComponent } from '../delete-user-overlay/delete-user-o
     VideoPlayerOverlayComponent,
     UserOverlayComponent,
     DeleteUserOverlayComponent,
+    RouterModule,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
@@ -34,8 +35,9 @@ export class HomeComponent {
   public genre: string[] = ['Fitness', 'Animals', 'Landscapes'];
 
   private route = inject(ActivatedRoute);
+  private router = inject(Router);
   public dataManager = inject(DataManagerService);
-  public menueService = inject(MenueStateService);
+  public menuService = inject(menuStateService);
 
   constructor() {}
 
@@ -49,12 +51,20 @@ export class HomeComponent {
     this.route.queryParams.subscribe((params) => {
       const visibility = params['visibility'];
 
-      if (visibility === 'public') {
-        this.homeRoute = true;
-        this.privateRoute = false;
-      } else if (visibility === 'private') {
-        this.homeRoute = false;
-        this.privateRoute = true;
+      if (!params['visibility']) {
+        this.router.navigate([], {
+          relativeTo: this.route,
+          queryParams: { visibility: 'public' },
+          queryParamsHandling: 'merge',
+        });
+      } else {
+        if (visibility === 'public') {
+          this.homeRoute = true;
+          this.privateRoute = false;
+        } else if (visibility === 'private') {
+          this.homeRoute = false;
+          this.privateRoute = true;
+        }
       }
     });
   }

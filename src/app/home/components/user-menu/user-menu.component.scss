@@ -1,0 +1,64 @@
+@import "./../../../../mixin.scss";
+
+.wrapper {
+  position: relative;
+
+  > img {
+    height: 24px;
+    width: 24px;
+    cursor: pointer;
+  }
+
+  .menu {
+    position: absolute;
+    top: 50px;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+
+    .upper-container {
+      @include flexCol();
+      min-width: 250px;
+
+      > div:first-child {
+        padding-bottom: 8px;
+        padding-top: 16px;
+      }
+
+      > div:last-child {
+        padding-bottom: 16px;
+        padding-top: 8px;
+      }
+
+      > div {
+        @include dflex($jc: flex-start, $gp: 16px);
+        width: 100%;
+        color: white;
+        padding-left: 16px;
+        padding-right: 16px;
+        cursor: pointer;
+
+        &:hover {
+          text-decoration: underline;
+        }
+
+        img {
+          height: 18px;
+          width: 18px;
+        }
+      }
+    }
+
+    .logout-container {
+      @include dflex();
+      width: 100%;
+      padding: 16px;
+      color: white;
+      cursor: pointer;
+      border-top: 1px solid rgba(255, 255, 255, 0.25);
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}

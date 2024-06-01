@@ -2,37 +2,37 @@ import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { AuthService } from '../../../auth/services/auth.service';
 import { Router } from '@angular/router';
-import { MenueStateService } from '../../services/menue-state.service';
+import { menuStateService } from '../../services/menu-state.service';
 
 @Component({
-  selector: 'app-user-menue',
+  selector: 'app-user-menu',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './user-menue.component.html',
-  styleUrl: './user-menue.component.scss',
+  templateUrl: './user-menu.component.html',
+  styleUrl: './user-menu.component.scss',
 })
-export class UserMenueComponent {
-  public menueOpen: boolean = false;
+export class UsermenuComponent {
+  public menuOpen: boolean = true;
 
   private authService = inject(AuthService);
-  private menueService = inject(MenueStateService);
+  private menuService = inject(menuStateService);
   private router = inject(Router);
 
-  toggleMenue() {
-    this.menueOpen = !this.menueOpen;
+  togglemenu() {
+    this.menuOpen = !this.menuOpen;
   }
 
   toggleUploadOverlay() {
-    this.menueService.uploadOverlayOpen = !this.menueService.uploadOverlayOpen;
+    this.menuService.uploadOverlayOpen = !this.menuService.uploadOverlayOpen;
   }
 
   toggleUserOverlay() {
-    this.menueService.userOverlayOpen = !this.menueService.userOverlayOpen;
+    this.menuService.userOverlayOpen = !this.menuService.userOverlayOpen;
   }
 
   toggleDeleteuserOverlay() {
-    this.menueService.deleteUserOverlayOpen =
-      !this.menueService.deleteUserOverlayOpen;
+    this.menuService.deleteUserOverlayOpen =
+      !this.menuService.deleteUserOverlayOpen;
   }
 
   async logout() {

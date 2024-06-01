@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { ButtonWithoutIconComponent } from '../button-without-icon/button-without-icon.component';
 import { Router, RouterModule } from '@angular/router';
-import { UserMenueComponent } from '../../../home/components/user-menue/user-menue.component';
+import { UsermenuComponent } from '../../../home/components/user-menu/user-menu.component';
 
 @Component({
   selector: 'app-header',
@@ -11,7 +11,7 @@ import { UserMenueComponent } from '../../../home/components/user-menue/user-men
     CommonModule,
     ButtonWithoutIconComponent,
     RouterModule,
-    UserMenueComponent,
+    UsermenuComponent,
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',

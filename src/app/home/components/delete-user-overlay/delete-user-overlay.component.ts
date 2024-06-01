@@ -1,6 +1,5 @@
 import { Component, inject } from '@angular/core';
 import { ButtonWithoutIconComponent } from '../../../shared/components/button-without-icon/button-without-icon.component';
-import { MenueStateService } from '../../services/menue-state.service';
 import { AuthService } from '../../../auth/services/auth.service';
 import {
   FormBuilder,
@@ -12,6 +11,7 @@ import {
 import { FormInputWithErrorComponent } from '../../../shared/components/form-input-with-error/form-input-with-error.component';
 import { CustomValidators } from '../../../auth/custom-validators';
 import { Router } from '@angular/router';
+import { menuStateService } from '../../services/menu-state.service';
 
 @Component({
   selector: 'app-delete-user-overlay',
@@ -26,7 +26,7 @@ import { Router } from '@angular/router';
   styleUrl: './delete-user-overlay.component.scss',
 })
 export class DeleteUserOverlayComponent {
-  private menueService = inject(MenueStateService);
+  private menuService = inject(menuStateService);
   private authService = inject(AuthService);
   private fb = inject(FormBuilder);
   private router = inject(Router);
@@ -43,8 +43,8 @@ export class DeleteUserOverlayComponent {
   }
 
   closeOverlay() {
-    this.menueService.deleteUserOverlayOpen = false;
-    this.menueService.userOverlayOpen = true;
+    this.menuService.deleteUserOverlayOpen = false;
+    this.menuService.userOverlayOpen = true;
   }
 
   async deleteAccount() {

@@ -1,0 +1,23 @@
+<div class="wrapper">
+  <img
+    src="../../../../assets/img/user-icon.svg"
+    alt="user.img"
+    (click)="togglemenu()"
+  />
+
+  @if (menuOpen) {
+  <div class="menu">
+    <div class="upper-container">
+      <div (click)="toggleUserOverlay()">
+        <img src="./../../../../assets/img/user-icon.svg" alt="user-icon" />
+        <span>User Data</span>
+      </div>
+      <div (click)="toggleUploadOverlay()">
+        <img src="" alt="user-icon" />
+        <span>Upload private Video</span>
+      </div>
+    </div>
+    <div class="logout-container" (click)="logout()">Logout</div>
+  </div>
+  }
+</div>

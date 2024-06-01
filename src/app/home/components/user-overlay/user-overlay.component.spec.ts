@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { UserOverlayComponent } from './user-overlay.component';
 
 describe('UserOverlayComponent', () => {
@@ -8,10 +7,9 @@ describe('UserOverlayComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [UserOverlayComponent]
-    })
-    .compileComponents();
-    
+      imports: [UserOverlayComponent],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(UserOverlayComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

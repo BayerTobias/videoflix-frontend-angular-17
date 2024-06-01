@@ -34,14 +34,26 @@
     </div>
   </main>
   }@else {
-  <main>
-    <div style="color: red">Param Error</div>
+  <main class="error-page">
+    <h2>Welcome to Our Platform!</h2>
+    <p>
+      You've landed on the homepage. If something didn't work as expected, you
+      can either click on the
+      <a routerLink="/home" [queryParams]="{ visibility: 'private' }"
+        >private videos</a
+      >
+      or
+      <a routerLink="/home" [queryParams]="{ visibility: 'public' }"
+        >public videos</a
+      >
+      links to proceed.
+    </p>
   </main>
-  } @if(menueService.uploadOverlayOpen){
+  } @if(menuService.uploadOverlayOpen){
   <app-video-upload-overlay></app-video-upload-overlay>
-  }@if (menueService.userOverlayOpen) {
+  }@if (menuService.userOverlayOpen) {
   <app-user-overlay></app-user-overlay>
-  }@if (menueService.deleteUserOverlayOpen) {
+  }@if (menuService.deleteUserOverlayOpen) {
   <app-delete-user-overlay></app-delete-user-overlay>
   } @if (videoPlayerOpen && selectedVideo) {
   <app-video-player-overlay

@@ -11,8 +11,8 @@ import { FormInputWithErrorComponent } from '../../../shared/components/form-inp
 import { ButtonWithoutIconComponent } from '../../../shared/components/button-without-icon/button-without-icon.component';
 import { CustomValidators } from '../../../auth/custom-validators';
 import { AuthService } from '../../../auth/services/auth.service';
-import { MenueStateService } from '../../services/menue-state.service';
 import { User } from '../../../models/user.model';
+import { menuStateService } from '../../services/menu-state.service';
 
 @Component({
   selector: 'app-user-overlay',
@@ -29,7 +29,7 @@ import { User } from '../../../models/user.model';
 })
 export class UserOverlayComponent {
   private authService = inject(AuthService);
-  private menueService = inject(MenueStateService);
+  private menuService = inject(menuStateService);
   private fb = inject(FormBuilder);
 
   public updateUserForm: FormGroup;
@@ -135,11 +135,11 @@ export class UserOverlayComponent {
   }
 
   openDeleteUserOverlay() {
-    this.menueService.deleteUserOverlayOpen = true;
+    this.menuService.deleteUserOverlayOpen = true;
     this.closeOverlay();
   }
 
   closeOverlay() {
-    this.menueService.userOverlayOpen = false;
+    this.menuService.userOverlayOpen = false;
   }
 }

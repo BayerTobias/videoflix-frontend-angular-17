@@ -133,6 +133,6 @@ export class LoginComponent {
 
   handleSuccessfullLogin(resp: LoginResponse) {
     localStorage.setItem('token', resp.auth_token);
-    this.router.navigateByUrl('/home');
+    this.router.navigateByUrl('/home?visibility=public');
   }
 }
