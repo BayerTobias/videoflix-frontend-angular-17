@@ -14,10 +14,10 @@
     top: 50px;
     right: 0;
     background-color: rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
 
     .upper-container {
       @include flexCol();
-      min-width: 250px;
 
       > div:first-child {
         padding-bottom: 8px;
@@ -44,6 +44,10 @@
         img {
           height: 18px;
           width: 18px;
+        }
+
+        span {
+          text-wrap: nowrap;
         }
       }
     }

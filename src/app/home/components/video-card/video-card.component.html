@@ -1,4 +1,8 @@
-<div class="wrapper">
+<div
+  class="wrapper"
+  (mouseenter)="onMouseEnter($event)"
+  (mouseleave)="onMouseLeave($event)"
+>
   <div class="img-container">
     <img src="{{ video?.thumbnail_file }}" alt="img" />
   </div>

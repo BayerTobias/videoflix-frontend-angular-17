@@ -12,7 +12,7 @@ import { menuStateService } from '../../services/menu-state.service';
   styleUrl: './user-menu.component.scss',
 })
 export class UsermenuComponent {
-  public menuOpen: boolean = true;
+  public menuOpen: boolean = false;
 
   private authService = inject(AuthService);
   private menuService = inject(menuStateService);
@@ -24,15 +24,12 @@ export class UsermenuComponent {
 
   toggleUploadOverlay() {
     this.menuService.uploadOverlayOpen = !this.menuService.uploadOverlayOpen;
+    this.menuOpen = false;
   }
 
   toggleUserOverlay() {
     this.menuService.userOverlayOpen = !this.menuService.userOverlayOpen;
-  }
-
-  toggleDeleteuserOverlay() {
-    this.menuService.deleteUserOverlayOpen =
-      !this.menuService.deleteUserOverlayOpen;
+    this.menuOpen = false;
   }
 
   async logout() {

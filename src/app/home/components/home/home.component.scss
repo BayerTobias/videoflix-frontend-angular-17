@@ -11,7 +11,7 @@
 }
 
 main {
-  @include flexCol($ai: flex-start, $gp: 8px);
+  @include flexCol($ai: flex-start, $gp: 16px);
   flex: 1;
   padding: 36px;
 }
