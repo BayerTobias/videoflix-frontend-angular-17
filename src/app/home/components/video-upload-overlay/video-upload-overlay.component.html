@@ -1,4 +1,8 @@
 <section (click)="closeOverlay()" [ngClass]="{ uploading: isUploading }">
+  <div (click)="closeOverlay()" class="close-overlay-button">
+    <img src="./../../../../assets/img/cancel-icon.svg" alt="X" />
+  </div>
+
   <form
     (click)="$event.stopPropagation()"
     [formGroup]="uploadForm"

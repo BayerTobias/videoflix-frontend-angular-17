@@ -30,7 +30,7 @@ import { menuStateService } from '../../services/menu-state.service';
 export class HomeComponent {
   public homeRoute: boolean = false;
   public privateRoute: boolean = false;
-  public videoPlayerOpen: boolean = true;
+  public videoPlayerOpen: boolean = false;
   public selectedVideo?: Video;
   public genre: string[] = ['Fitness', 'Animals', 'Landscapes'];
 
@@ -45,6 +45,15 @@ export class HomeComponent {
     this.setRoute();
     await this.dataManager.getPublicVideos();
     await this.dataManager.getPrivateVideos();
+  }
+
+  isAnyOverlayOpen() {
+    return (
+      this.videoPlayerOpen ||
+      this.menuService.deleteUserOverlayOpen ||
+      this.menuService.uploadOverlayOpen ||
+      this.menuService.userOverlayOpen
+    );
   }
 
   setRoute() {

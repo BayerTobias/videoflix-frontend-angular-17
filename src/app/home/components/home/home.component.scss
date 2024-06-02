@@ -13,7 +13,7 @@
 main {
   @include flexCol($ai: flex-start, $gp: 52px);
   flex: 1;
-  padding: 36px;
+  padding: 16px;
 }
 
 .stop-scroll {

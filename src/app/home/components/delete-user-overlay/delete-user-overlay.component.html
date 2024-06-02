@@ -1,4 +1,8 @@
 <section (click)="closeOverlay()">
+  <div (click)="closeOverlay()" class="close-overlay-button">
+    <img src="./../../../../assets/img/cancel-icon.svg" alt="X" />
+  </div>
+
   <form (click)="$event.stopPropagation()" (ngSubmit)="deleteAccount()">
     <h2>Confirm Account Deletion</h2>
     <p>
