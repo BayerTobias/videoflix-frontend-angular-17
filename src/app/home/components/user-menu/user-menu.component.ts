@@ -1,8 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { AuthService } from '../../../auth/services/auth.service';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { menuStateService } from '../../services/menu-state.service';
+import { merge } from 'rxjs';
 
 @Component({
   selector: 'app-user-menu',
@@ -29,6 +30,14 @@ export class UsermenuComponent {
 
   toggleUserOverlay() {
     this.menuService.userOverlayOpen = !this.menuService.userOverlayOpen;
+    this.menuOpen = false;
+  }
+
+  routeHome(queryParam: string) {
+    this.router.navigate([], {
+      queryParams: { visibility: queryParam },
+      queryParamsHandling: 'merge',
+    });
     this.menuOpen = false;
   }
 

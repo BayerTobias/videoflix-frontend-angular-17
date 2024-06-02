@@ -12,8 +12,16 @@
         <img src="./../../../../assets/img/user-icon.svg" alt="user-icon" />
         <span>User Data</span>
       </div>
+      <div (click)="routeHome('public')" class="hide-400px">
+        <img src="" alt="cam-icon" />
+        <span>Public videos</span>
+      </div>
+      <div (click)="routeHome('private')" class="hide-400px">
+        <img src="" alt="cam-icon" />
+        <span>Private videos</span>
+      </div>
       <div (click)="toggleUploadOverlay()">
-        <img src="" alt="user-icon" />
+        <img src="" alt="upload-icon" />
         <span>Upload private Video</span>
       </div>
     </div>

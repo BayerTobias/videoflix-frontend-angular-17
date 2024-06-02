@@ -6,6 +6,10 @@ header {
 
   > div {
     @include dflex($gp: 32px);
+
+    @media screen and (max-width: 450px) {
+      gap: 16px;
+    }
   }
 
   img {
@@ -15,10 +19,18 @@ header {
   nav {
     @include dflex($gp: 16px);
 
+    @media screen and (max-width: 450px) {
+      gap: 8px;
+    }
+
     a {
       font-size: 14px;
       text-decoration: none;
       color: rgba(255, 255, 255, 0.7);
+
+      @media screen and (max-width: 400px) {
+        display: none;
+      }
     }
 
     .active-link {
