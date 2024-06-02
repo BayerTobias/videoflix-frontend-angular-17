@@ -1,0 +1,31 @@
+@import "./../../../../mixin.scss";
+
+footer {
+  @include dflex($jc: space-between);
+  padding: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+
+  .left {
+    a {
+      @include dflex();
+      width: max-content;
+
+      img {
+        height: 24px;
+      }
+    }
+  }
+
+  .right {
+    @include flexCol();
+
+    a {
+      text-decoration: none;
+      color: rgba(255, 255, 255, 0.7);
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}

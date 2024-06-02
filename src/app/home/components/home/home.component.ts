@@ -10,6 +10,7 @@ import { Video } from '../../../models/video.model';
 import { UserOverlayComponent } from '../user-overlay/user-overlay.component';
 import { DeleteUserOverlayComponent } from '../delete-user-overlay/delete-user-overlay.component';
 import { menuStateService } from '../../services/menu-state.service';
+import { FooterComponent } from '../../../shared/components/footer/footer.component';
 
 @Component({
   selector: 'app-home',
@@ -23,6 +24,7 @@ import { menuStateService } from '../../services/menu-state.service';
     UserOverlayComponent,
     DeleteUserOverlayComponent,
     RouterModule,
+    FooterComponent,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',

@@ -8,12 +8,16 @@ import { AuthenticateEmailComponent } from './auth/components/authenticate-email
 import { HomeComponent } from './home/components/home/home.component';
 import { authGuard } from './auth/guards/auth.guard';
 import { PrivacyPolicyComponent } from './legal/components/privacy-policy/privacy-policy.component';
+import { ImprintComponent } from './legal/components/imprint/imprint.component';
+import { LegalNoticeComponent } from './legal/components/legal-notice/legal-notice.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'sign-up', component: SignUpComponent },
   { path: 'privacy-policy', component: PrivacyPolicyComponent },
+  { path: 'imprint', component: ImprintComponent },
+  { path: 'legal-notice', component: LegalNoticeComponent },
   { path: 'forgot-password', component: ForgotPasswordComponent },
   { path: 'reset-password/:uid/:token', component: ResetPasswordComponent },
   { path: 'activate/:uid/:token', component: AuthenticateEmailComponent },
