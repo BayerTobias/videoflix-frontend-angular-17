@@ -97,6 +97,14 @@ export class SignUpComponent {
     return this.signupForm.get('privacyPolicy');
   }
 
+  /**
+   * Registers a new user.
+   * If the signup form is valid, it sets 'sending' to true to indicate sending is in progress,
+   * then tries to register a new user using the provided username, email, password, and password repeat.
+   * If successful, it sets 'sending' to false and 'sendSuccessful' to true.
+   * If an error occurs during the registration process, it logs the error to the console and sets 'sending' to false.
+   * If the signup form is invalid, it marks all form controls as touched to display validation errors.
+   */
   async signup() {
     if (this.signupForm.valid) {
       this.sending = true;

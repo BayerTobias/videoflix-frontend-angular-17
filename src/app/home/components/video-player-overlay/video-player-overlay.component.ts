@@ -21,6 +21,9 @@ export class VideoPlayerOverlayComponent {
   public url720P?: string;
   public selectedUrl!: string;
 
+  /**
+   * Initializes component properties and checks the existence of video files.
+   */
   async ngOnInit() {
     this.baseUrl = this.video.video_file;
     this.selectedUrl = this.baseUrl;
@@ -44,6 +47,9 @@ export class VideoPlayerOverlayComponent {
     }
   }
 
+  /**
+   * Emits an event to close the overlay.
+   */
   closeOverlay() {
     this.close.emit();
   }

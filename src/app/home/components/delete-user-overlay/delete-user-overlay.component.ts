@@ -42,11 +42,21 @@ export class DeleteUserOverlayComponent {
     ]);
   }
 
+  /**
+   * Closes the user overlay and opens the main user menu.
+   */
   closeOverlay() {
     this.menuService.deleteUserOverlayOpen = false;
     this.menuService.userOverlayOpen = true;
   }
 
+  /**
+   * Deletes the user account.
+   * @remarks
+   * This method sets the sending flag to true and the HTTP error flag to false before attempting to delete the user account.
+   * After the deletion request, it clears the local storage and navigates the user to the login page.
+   * If an error occurs during the deletion process, it logs the error and sets the HTTP error flag to true.
+   */
   async deleteAccount() {
     if (this.password.valid) {
       this.sending = true;

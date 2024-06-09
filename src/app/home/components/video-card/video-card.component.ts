@@ -11,6 +11,10 @@ import { Video } from '../../../models/video.model';
 export class VideoCardComponent {
   @Input() video?: Video;
 
+  /**
+   * Handles the mouse enter event to display additional information.
+   * @param event The MouseEvent containing information about the event.
+   */
   onMouseEnter(event: MouseEvent) {
     const wrapper = event.currentTarget as HTMLElement;
     const infoContainer = wrapper.querySelector(
@@ -20,6 +24,10 @@ export class VideoCardComponent {
     infoContainer.style.transform = `translateY(-${infoHeight - 43}px)`;
   }
 
+  /**
+   * Handles the mouse leave event to hide additional information.
+   * @param event The MouseEvent containing information about the event.
+   */
   onMouseLeave(event: MouseEvent) {
     const wrapper = event.currentTarget as HTMLElement;
     const infoContainer = wrapper.querySelector(

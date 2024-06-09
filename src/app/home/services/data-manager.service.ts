@@ -21,6 +21,11 @@ export class DataManagerService {
 
   constructor() {}
 
+  /**
+   * Retrieves public videos from the server.
+   * Constructs the URL for fetching public videos, makes a GET request to the server,
+   * maps the response to Video objects, and sorts the videos based on their genre.
+   */
   async getPublicVideos() {
     const url = environment.baseUrl + '/videos/?visibility=public';
 
@@ -41,6 +46,12 @@ export class DataManagerService {
     }
   }
 
+  /**
+   * Sorts the public videos into genre-specific arrays.
+   * Initializes the publicVideos object with arrays for different genres,
+   * iterates through the videos and categorizes them based on their genre.
+   * @param videos An array of Video objects representing public videos.
+   */
   sortPublicVideos(videos: Video[]) {
     console.log(videos);
 
@@ -67,6 +78,11 @@ export class DataManagerService {
     });
   }
 
+  /**
+   * Retrieves private videos from the server.
+   * Constructs the URL for fetching private videos, makes a GET request to the server,
+   * maps the response to Video objects, and assigns them to the privateVideos property.
+   */
   async getPrivateVideos() {
     const url = `${
       environment.baseUrl
@@ -86,6 +102,12 @@ export class DataManagerService {
     }
   }
 
+  /**
+   * Uploads a video to the server.
+   * Constructs the URL for uploading videos, makes a POST request with the provided FormData,
+   * and returns a promise representing the HTTP response.
+   * @param formData FormData containing the video and associated metadata.
+   */
   async uploadVideo(formData: FormData) {
     const url = environment.baseUrl + '/videos/';
     const body = formData;
@@ -93,6 +115,11 @@ export class DataManagerService {
     return lastValueFrom(this.http.post(url, body));
   }
 
+  /**
+   * Checks if a video exists at the specified URL.
+   * Sends a HEAD request to the server and returns a promise representing the HTTP response.
+   * @param url The URL of the video to check for existence.
+   */
   async checkIfVideoExists(url: string) {
     return lastValueFrom(this.http.head(url));
   }

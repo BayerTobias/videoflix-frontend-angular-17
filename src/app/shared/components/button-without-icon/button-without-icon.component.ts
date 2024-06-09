@@ -19,6 +19,12 @@ export class ButtonWithoutIconComponent {
   @Input() disable: boolean = false;
   @Input() isUploading: boolean = false;
 
+  /**
+   * Returns a style object for dynamic styling of an element.
+   * Constructs an object with height, width, font size, and font weight properties,
+   * which are dynamically set based on the component's properties.
+   * @returns An object representing the style to be applied to an element.
+   */
   getStyle() {
     return {
       height: this.height,

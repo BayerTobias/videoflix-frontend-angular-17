@@ -18,6 +18,10 @@ export class AuthenticateEmailComponent {
   private authService = inject(AuthService);
   private route = inject(ActivatedRoute);
 
+  /**
+   * Lifecycle hook that is called after Angular has initialized all data-bound properties of a directive.
+   * This method retrieves the 'uid' and 'token' from the route parameters and assigns them to the component's properties.
+   */
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('uid');
     const token = this.route.snapshot.paramMap.get('token');
@@ -26,9 +30,13 @@ export class AuthenticateEmailComponent {
       this.uid = id;
       this.token = token;
     }
-    console.log(this.uid, this.token);
   }
 
+  /**
+   * Lifecycle hook that is called after Angular has fully initialized a component's view.
+   * This method attempts to authenticate the email using the 'uid' and 'token'. If authentication is successful,
+   * it sets 'sendSuccessful' to true. If there is an error, it logs the error to the console.
+   */
   async ngAfterViewInit() {
     try {
       await this.authService.authenticateEmail(this.uid, this.token);

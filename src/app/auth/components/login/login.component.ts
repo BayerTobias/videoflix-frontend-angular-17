@@ -77,6 +77,14 @@ export class LoginComponent {
     return this.loginForm.get('rememberMe');
   }
 
+  /**
+   * Attempts to log in the user.
+   * If the login form is valid, it clears previous login error, sets local storage if 'rememberMe' is checked,
+   * and tries to log in using the provided username and password.
+   * If the login is successful, it handles the successful login response.
+   * If an error occurs during login, it sets 'loginError' to true and logs the error to the console.
+   * If the login form is invalid, it marks all form controls as touched to display validation errors.
+   */
   async login() {
     if (this.loginForm.valid) {
       this.loginError = false;
@@ -95,6 +103,12 @@ export class LoginComponent {
     } else this.loginForm.markAllAsTouched();
   }
 
+  /**
+   * Logs in as a guest user.
+   * Attempts to log in using predefined guest credentials.
+   * If the login is successful, it handles the successful login response.
+   * If an error occurs during login, it logs the error to the console.
+   */
   async guestLogin() {
     try {
       const resp: LoginResponse =
@@ -108,6 +122,10 @@ export class LoginComponent {
     }
   }
 
+  /**
+   * Sets local storage with the provided username and password if 'rememberMe' is checked;
+   * otherwise, removes them from local storage.
+   */
   setLocalStorage() {
     if (this.rememberMe?.value === true) {
       localStorage.setItem('username', this.username?.value);
@@ -118,6 +136,9 @@ export class LoginComponent {
     }
   }
 
+  /**
+   * Checks local storage for saved username and password and populates the login form if found.
+   */
   checkLocalStorage() {
     const username = localStorage.getItem('username');
     const password = localStorage.getItem('password');
@@ -131,6 +152,11 @@ export class LoginComponent {
     }
   }
 
+  /**
+   * Handles a successful login response by storing the authentication token in local storage
+   * and navigating the user to the home page with public visibility.
+   * @param resp The response containing the authentication token.
+   */
   handleSuccessfullLogin(resp: LoginResponse) {
     localStorage.setItem('token', resp.auth_token);
     this.router.navigateByUrl('/home?visibility=public');

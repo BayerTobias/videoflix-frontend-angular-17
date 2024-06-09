@@ -80,6 +80,11 @@ export class VideoUploadOverlayComponent {
     return this.uploadForm.get('thumbnail');
   }
 
+  /**
+   * Handles the change event when a file is selected.
+   * @param event The change event containing the selected file.
+   * @param field The field name corresponding to the type of file selected (e.g., 'video' or 'thumbnail').
+   */
   onFileChange(event: Event, field: string) {
     const input = event.target as HTMLInputElement;
 
@@ -95,6 +100,12 @@ export class VideoUploadOverlayComponent {
     }
   }
 
+  /**
+   * Uploads the video file and associated metadata.
+   * If the form is valid, constructs a FormData object with the form values and files,
+   * uploads the video using the dataManager service, and closes the upload overlay.
+   * If the form is invalid, marks all form controls as touched.
+   */
   async uploadVideo() {
     if (this.uploadForm.valid) {
       const formData = new FormData();
@@ -112,6 +123,9 @@ export class VideoUploadOverlayComponent {
     } else this.uploadForm.markAllAsTouched();
   }
 
+  /**
+   * Closes the upload overlay.
+   */
   closeOverlay() {
     this.menuService.uploadOverlayOpen = false;
   }

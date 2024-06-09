@@ -24,6 +24,9 @@ export class HeaderComponent {
 
   private router = inject(Router);
 
+  /**
+   * This method checks the current URL and sets boolean flags to indicate which page is active.
+   */
   ngOnInit() {
     this.signUpPage = this.router.url.includes('/sign-up');
     this.forgotPasswordPage = this.router.url.includes('/forgot-password');

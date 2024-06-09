@@ -49,6 +49,10 @@ export class HomeComponent {
     await this.dataManager.getPrivateVideos();
   }
 
+  /**
+   * Checks if any overlay is open.
+   * @returns A boolean value indicating whether any overlay is currently open.
+   */
   isAnyOverlayOpen() {
     return (
       this.videoPlayerOpen ||
@@ -58,6 +62,14 @@ export class HomeComponent {
     );
   }
 
+  /**
+   * Sets the route based on the query parameters.
+   * @remarks
+   * If the 'visibility' query parameter is not present, it navigates to the public route.
+   * If the 'visibility' parameter is present:
+   * - If it is 'public', sets `homeRoute` to true and `privateRoute` to false.
+   * - If it is 'private', sets `homeRoute` to false and `privateRoute` to true.
+   */
   setRoute() {
     this.route.queryParams.subscribe((params) => {
       const visibility = params['visibility'];
@@ -80,15 +92,25 @@ export class HomeComponent {
     });
   }
 
+  /**
+   * Opens the video player overlay with the specified video.
+   * @param video - The video to be displayed in the video player overlay.
+   */
   openVideoPlayer(video: Video) {
     this.selectedVideo = video;
     this.videoPlayerOpen = true;
   }
 
+  /**
+   * Opens the upload video overlay.
+   */
   openUploadVideo() {
     this.menuService.uploadOverlayOpen = true;
   }
 
+  /**
+   * Closes the video player overlay.
+   */
   closeVideoPlayer() {
     this.videoPlayerOpen = false;
   }

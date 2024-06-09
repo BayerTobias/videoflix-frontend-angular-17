@@ -45,6 +45,13 @@ export class ForgotPasswordComponent {
     ]);
   }
 
+  /**
+   * Sends a request to reset the password via email.
+   * If the email input is valid, it sends a request to reset the password using the provided email address.
+   * If the request is successful, it sets 'sendToMail' to the email address and 'sendSuccessful' to true.
+   * If an error occurs during the request, it logs the error to the console.
+   * Finally, it marks the email form control as touched.
+   */
   async requestPasswordResetEmail() {
     if (this.email.valid) {
       try {

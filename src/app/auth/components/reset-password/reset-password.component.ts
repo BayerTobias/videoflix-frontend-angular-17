@@ -53,6 +53,10 @@ export class ResetPasswordComponent {
     );
   }
 
+  /**
+   * Initializes the component by extracting the user ID and token from the route parameters.
+   * If both ID and token are present, they are assigned to the corresponding component properties.
+   */
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('uid');
     const token = this.route.snapshot.paramMap.get('token');
@@ -81,6 +85,14 @@ export class ResetPasswordComponent {
     return this.resetPasswordForm.get('passwordRepeat');
   }
 
+  /**
+   * Sets a new password for the user.
+   * If the reset password form is valid, it sets 'sending' to true to indicate sending is in progress,
+   * then tries to set a new password using the provided user ID, token, and password.
+   * If successful, it sets 'sending' to false and 'sendSuccessful' to true.
+   * If an error occurs during the password reset, it logs the error to the console and sets 'sending' to false.
+   * If the reset password form is invalid, it marks all form controls as touched to display validation errors.
+   */
   async setNewPassword() {
     if (this.resetPasswordForm.valid) {
       this.sending = true;

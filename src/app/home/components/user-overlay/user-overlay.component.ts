@@ -46,6 +46,9 @@ export class UserOverlayComponent {
     });
   }
 
+  /**
+   * Initializes the component with the user's details if available.
+   */
   ngOnInit() {
     if (this.authService.user) {
       this.updateUserForm.patchValue({
@@ -93,6 +96,10 @@ export class UserOverlayComponent {
     return this.updateUserForm.get('last_name');
   }
 
+  /**
+   * Updates the user's profile.
+   * If the form is valid, it updates the user's details.
+   */
   async updateUser() {
     if (this.updateUserForm.valid) {
       this.sending = true;
@@ -116,6 +123,10 @@ export class UserOverlayComponent {
     }
   }
 
+  /**
+   * Retrieves the user details from the form.
+   * @returns The user object with the updated details.
+   */
   getUser() {
     const user = new User();
     user.id = this.authService.user!.id;
@@ -127,6 +138,10 @@ export class UserOverlayComponent {
     return user;
   }
 
+  /**
+   * Checks if there are any changes in the form compared to the current user details.
+   * @returns A boolean indicating whether there are no changes in the form.
+   */
   noFormChanges() {
     const user = this.getUser();
     const authUser = this.authService.user;
@@ -134,11 +149,18 @@ export class UserOverlayComponent {
     return JSON.stringify(user) === JSON.stringify(authUser);
   }
 
+  /**
+   * Opens the delete user overlay.
+   * Closes the user overlay.
+   */
   openDeleteUserOverlay() {
     this.menuService.deleteUserOverlayOpen = true;
     this.closeOverlay();
   }
 
+  /**
+   * Closes the user overlay.
+   */
   closeOverlay() {
     this.menuService.userOverlayOpen = false;
   }
