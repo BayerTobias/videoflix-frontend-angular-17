@@ -53,8 +53,6 @@ export class DataManagerService {
    * @param videos An array of Video objects representing public videos.
    */
   sortPublicVideos(videos: Video[]) {
-    console.log(videos);
-
     this.publicVideos = {
       fitness: [],
       animals: [],
@@ -96,7 +94,6 @@ export class DataManagerService {
         (videoData: VideoResponse) => new Video(videoData)
       );
       this.privateVideos = videos;
-      console.log(this.privateVideos);
     } catch (err) {
       console.error(err);
     }
