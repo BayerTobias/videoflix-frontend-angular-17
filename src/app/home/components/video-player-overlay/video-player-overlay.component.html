@@ -4,7 +4,31 @@
   </div>
 
   <div (click)="$event.stopPropagation()" class="video-player-container">
-    <video [src]="video.video_file" controls="true"></video>
+    <video [src]="selectedUrl" controls="true"></video>
+    <div class="select-resolution-container">
+      @if (baseUrl) {
+      <app-button-without-icon
+        (click)="selectedUrl = baseUrl"
+        [colorStyle]="selectedUrl === baseUrl ? 'red' : 'gray'"
+        [content]="'Original'"
+        [height]="'26px'"
+      ></app-button-without-icon>
+      } @if (url480P) {
+      <app-button-without-icon
+        (click)="selectedUrl = url480P"
+        [colorStyle]="selectedUrl === url480P ? 'red' : 'gray'"
+        [content]="'480P'"
+        [height]="'26px'"
+      ></app-button-without-icon
+      >} @if (url720P) {
+      <app-button-without-icon
+        (click)="selectedUrl = url720P"
+        [colorStyle]="selectedUrl === url720P ? 'red' : 'gray'"
+        [content]="'720P'"
+        [height]="'26px'"
+      ></app-button-without-icon
+      >}
+    </div>
     <div class="info-wrapper">
       <div class="left">
         <h2>{{ video.title }}</h2>

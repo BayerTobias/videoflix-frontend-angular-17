@@ -92,4 +92,8 @@ export class DataManagerService {
 
     return lastValueFrom(this.http.post(url, body));
   }
+
+  async checkIfVideoExists(url: string) {
+    return lastValueFrom(this.http.head(url));
+  }
 }

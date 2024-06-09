@@ -46,6 +46,11 @@ section {
       max-width: 100%;
     }
 
+    .select-resolution-container {
+      @include dflex($gp: 8px, $jc: flex-start);
+      padding: 16px 16px 0 16px;
+    }
+
     .info-wrapper {
       @include dflex($jc: space-between, $ai: flex-start, $gp: 16px);
       padding: 16px;
