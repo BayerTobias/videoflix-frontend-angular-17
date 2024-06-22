@@ -44,7 +44,7 @@
       [height]="'40px'"
       [width]="'100%'"
       [fontWeight]="700"
-      [disable]="sending"
+      [disable]="sending || authService.user?.username === 'guestuser'"
     ></app-button-without-icon>
 
     <div class="seperator"></div>
@@ -57,9 +57,12 @@
       [width]="'100%'"
       [fontWeight]="700"
       (click)="openDeleteUserOverlay()"
+      [disable]="authService.user?.username === 'guestuser'"
     ></app-button-without-icon>
 
-    @if (success) {
+    @if (authService.user?.username === 'guestuser') {
+    <span>Sorry, you can't change the guest user data.</span>
+    } @if (success) {
     <span>Your user data has been updated successfully.</span>
     } @if (noChanges) {
     <span>No changes have been made to your data.</span>

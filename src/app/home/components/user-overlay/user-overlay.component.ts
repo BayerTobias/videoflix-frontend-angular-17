@@ -28,7 +28,7 @@ import { menuStateService } from '../../services/menu-state.service';
   styleUrl: './user-overlay.component.scss',
 })
 export class UserOverlayComponent {
-  private authService = inject(AuthService);
+  public authService = inject(AuthService);
   private menuService = inject(menuStateService);
   private fb = inject(FormBuilder);
 
@@ -154,8 +154,10 @@ export class UserOverlayComponent {
    * Closes the user overlay.
    */
   openDeleteUserOverlay() {
-    this.menuService.deleteUserOverlayOpen = true;
-    this.closeOverlay();
+    if (this.authService.user?.username !== 'guestuser') {
+      this.menuService.deleteUserOverlayOpen = true;
+      this.closeOverlay();
+    }
   }
 
   /**
