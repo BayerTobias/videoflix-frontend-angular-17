@@ -33,6 +33,7 @@ import { CustomValidators } from '../../custom-validators';
 export class LoginComponent {
   public loginForm: FormGroup;
   public loginError: boolean = false;
+  public loading: boolean = false;
 
   private fb = inject(FormBuilder);
   private authService = inject(AuthService);
@@ -86,8 +87,9 @@ export class LoginComponent {
    * If the login form is invalid, it marks all form controls as touched to display validation errors.
    */
   async login() {
-    if (this.loginForm.valid) {
+    if (this.loginForm.valid && !this.loading) {
       this.loginError = false;
+      this.loading = true;
       this.setLocalStorage();
       try {
         const resp: LoginResponse =
@@ -100,6 +102,7 @@ export class LoginComponent {
         this.loginError = true;
         console.error('Login error:', err);
       }
+      this.loading = false;
     } else this.loginForm.markAllAsTouched();
   }
 
@@ -110,15 +113,19 @@ export class LoginComponent {
    * If an error occurs during login, it logs the error to the console.
    */
   async guestLogin() {
-    try {
-      const resp: LoginResponse =
-        (await this.authService.loginWithUsernameAndPassword(
-          'guestuser',
-          'guestPassword123'
-        )) as LoginResponse;
-      this.handleSuccessfullLogin(resp);
-    } catch (err) {
-      console.error('Login error:', err);
+    if (!this.loading) {
+      this.loading = true;
+      try {
+        const resp: LoginResponse =
+          (await this.authService.loginWithUsernameAndPassword(
+            'guestuser',
+            'guestPassword123'
+          )) as LoginResponse;
+        this.handleSuccessfullLogin(resp);
+      } catch (err) {
+        console.error('Login error:', err);
+      }
+      this.loading = false;
     }
   }
 

@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-button-without-icon',
@@ -18,6 +18,8 @@ export class ButtonWithoutIconComponent {
   @Input() fontWeight: number = 400;
   @Input() disable: boolean = false;
   @Input() isUploading: boolean = false;
+
+  @Output() buttonKlicked = new EventEmitter();
 
   /**
    * Returns a style object for dynamic styling of an element.

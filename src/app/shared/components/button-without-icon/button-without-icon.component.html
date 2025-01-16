@@ -1,4 +1,5 @@
 <button
+  (click)="buttonKlicked.emit()"
   [ngClass]="{ uploading: isUploading }"
   [disabled]="disable"
   [style]="getStyle()"

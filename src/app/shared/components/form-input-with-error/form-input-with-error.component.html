@@ -6,6 +6,7 @@
     [value]="value"
     (input)="updateValue($event)"
     (blur)="onBlur()"
+    [disabled]="isUploading"
   />
 
   @if (control && control.touched) { @if (errorSet === 'username') { @if

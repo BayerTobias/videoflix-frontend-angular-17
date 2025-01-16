@@ -1,11 +1,16 @@
 <div class="wrapper">
   <app-header></app-header>
   <main>
-    <form [formGroup]="loginForm" (ngSubmit)="login()">
+    <form
+      [formGroup]="loginForm"
+      (ngSubmit)="login()"
+      [ngClass]="{ wait: loading }"
+    >
       <h1>Login</h1>
 
       <app-form-input-with-error
         formControlName="username"
+        [isUploading]="loading"
         [placeholder]="'Username'"
         [type]="'text'"
         [errorSet]="'username'"
@@ -15,6 +20,7 @@
 
       <app-form-input-with-error
         formControlName="password"
+        [isUploading]="loading"
         [placeholder]="'Password'"
         [type]="'password'"
         [errorSet]="'password'"
@@ -29,18 +35,20 @@
         [height]="'40px'"
         [width]="'100%'"
         [fontWeight]="700"
+        [isUploading]="loading"
       ></app-button-without-icon>
 
       <span>OR</span>
 
       <app-button-without-icon
-        (click)="guestLogin()"
+        (buttonKlicked)="guestLogin()"
         [content]="'Guest Login'"
         [type]="'button'"
         [colorStyle]="'gray'"
         [height]="'40px'"
         [width]="'100%'"
         [fontWeight]="700"
+        [isUploading]="loading"
       ></app-button-without-icon>
 
       <label>
